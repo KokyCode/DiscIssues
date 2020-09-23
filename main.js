@@ -8,8 +8,6 @@ const {
 const { Octokit } = require("@octokit/rest");
 const differenceBy = require('lodash/differenceBy')
 
-
-
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
@@ -48,14 +46,21 @@ function queryGitHub(keyword, delay) {
           })
   }, delay)
 }
-//const keywords = ['xss vulnerable', 'injection vulnerable', 'denial vulnerable', 'traversal vulnerable'] // MAX 20
-const keywords = ['error', 'issue'] // MAX 20
+const keywords = ['xss vulnerable', 'injection vulnerable', 'denial vulnerable', 'traversal vulnerable'] // MAX 20
+//const keywords = ['error', 'issue'] // MAX 20
 const delayLength = 60000 / 20 * keywords.length // 1 minute rate limit / 20 requests per minute * amount of keywords
 if (isMainThread) {
     console.log('Main: Starting the main thread. Connecting to the bot...')
 
     client.on('ready', () => {
-      console.log(`Connected! Logged in as ${client.user.tag}!`);
+    console.log(`Connected! Logged in as ${client.user.tag}!`);
+    client.user.setPresence({
+        status: "online",  //You can show online, idle....
+        activity: {
+            name: "for issues",  //The message shown
+            type: "WATCHING" //PLAYING: WATCHING: LISTENING: STREAMING:
+        }
+    });
       client.channels.cache.get('466723055532638247').send('Initiated. Version 1.0.0 - Developed by k0rrupt#0394 & Koky#1337')
     });
 

@@ -5,4 +5,4 @@ A bot designed to notify you when an issue is discovered on Github.
 A Discord bot designed for http://www.huntr.dev to notify users when the latest issues are posted. 
 
 # Developers
-Ben Harvie & Austyn Koky 
+Ben H & Koky
